@@ -1,0 +1,8 @@
+.task {
+    display:flex;
+}
+
+.completed {
+    text-decoration: line-through;
+    color:slategray;
+}
