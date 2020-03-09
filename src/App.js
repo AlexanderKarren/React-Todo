@@ -21,6 +21,15 @@ class App extends React.Component {
     query: ""
   }
 
+  componentDidMount() {
+    console.log("component mounted");
+    try {
+      this.setState({tasks: JSON.parse(localStorage.getItem("tasks"))})
+    } catch (ex) {
+      console.error(ex);
+    }
+  }
+
   setQuery = searchQuery => {
     this.setState({query: searchQuery});
   }
@@ -56,10 +65,15 @@ class App extends React.Component {
     })})
   }
 
+  save = () => {
+    localStorage.setItem("tasks", JSON.stringify(this.state.tasks))
+  }
+
   render() {
     return (
       <div className="main-container">
-        <h1>Todo</h1>
+        <h1 style={{margin: "0"}}>Todo</h1>
+        <button style={{margin: "15px"}} onClick={this.save}>Save</button>
         <TodoSearch setQuery={this.setQuery}/>
         <TodoList tasks={this.state.tasks} toggleCompletion={this.toggleCompletion} query={this.state.query}/>
         <TodoForm addTask={this.addTask} clearAll={this.clearAll}/>
