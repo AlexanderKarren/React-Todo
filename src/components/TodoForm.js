@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './TodoForm.css'
 
 export default class TodoForm extends Component {
     state = {
@@ -17,8 +18,8 @@ export default class TodoForm extends Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
+            <div className="form-container">
+                <form onSubmit={this.handleSubmit} className="add-form">
                     <input type="text" placeholder="task to add" onChange={this.handleChange} value={this.state.value} />
                     <button type="submit">Add</button>
                 </form>

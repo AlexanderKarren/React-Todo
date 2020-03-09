@@ -1,0 +1,32 @@
+.form-container {
+    width:50%;
+}
+
+.form-container > button {
+    margin-top:5px;
+    width:100%;
+}
+
+.add-form {
+    margin-top:10px;
+    width:100%;
+    border-radius:5px;
+    border:1px solid lightgray;
+    display:flex;
+}
+
+.add-form:hover {
+    border:1px solid cornflowerblue;
+}
+
+.add-form input {
+    width:90%;
+    font-size:inherit;
+    margin:5px;
+    outline:none;
+    border:0;
+}
+
+.add-form button {
+    width:10%;
+}

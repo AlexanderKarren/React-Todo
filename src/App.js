@@ -1,6 +1,8 @@
 import React from 'react';
+import TodoSearch from './components/TodoSearch';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
+import './App.css';
 
 class App extends React.Component {
   state = {
@@ -15,7 +17,12 @@ class App extends React.Component {
         id: 1528817084358,
         completed: false
       }
-    ]
+    ],
+    query: ""
+  }
+
+  setQuery = searchQuery => {
+    this.setState({query: searchQuery});
   }
 
   addTask = taskName => {
@@ -51,10 +58,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="main-container">
         <h1>Todo</h1>
+        <TodoSearch setQuery={this.setQuery}/>
+        <TodoList tasks={this.state.tasks} toggleCompletion={this.toggleCompletion} query={this.state.query}/>
         <TodoForm addTask={this.addTask} clearAll={this.clearAll}/>
-        <TodoList tasks={this.state.tasks} toggleCompletion={this.toggleCompletion}/>
       </div>
     );
   }

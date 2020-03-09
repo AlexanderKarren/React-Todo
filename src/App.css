@@ -1,0 +1,25 @@
+.main-container {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    font-family: 'Arial', sans-serif;
+    width:100%;
+}
+
+button {
+    background-color:cornflowerblue;
+    border-radius:5px;
+    padding:8px;
+    font-size:100%;
+    border: 1px solid white;
+    color:white;
+    fill:white;
+}
+
+button:hover {
+    cursor:pointer;
+    color:cornflowerblue;
+    fill:cornflowerblue;
+    border:1px solid cornflowerblue;
+    background-color:white;
+}
