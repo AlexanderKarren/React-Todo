@@ -35,8 +35,16 @@ button > div > div {
 }
 
 .save {
-    margin-top:15px;
+    margin:15px;
     color:cornflowerblue;
+}
+
+.disabled, .disabled:hover {
+    color:slategray;
+    background-color:#F5F5F5;
+    cursor:default;
+    border:1px solid slategray;
+    transition:.5s;
 }
 
 .save > div:last-child {

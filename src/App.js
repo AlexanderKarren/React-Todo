@@ -8,12 +8,12 @@ class App extends React.Component {
   state = {
     tasks: [
       {
-        task: 'Organize Garage',
+        task: 'Add your own task',
         id: 1528817077286,
         completed: false
       },
       {
-        task: 'Bake Cookies',
+        task: 'Try saving your tasks and refreshing',
         id: 1528817084358,
         completed: false
       }
@@ -22,9 +22,15 @@ class App extends React.Component {
     saved: false,
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    console.log(prevProps, prevState);
+  }
+
   componentDidMount() {
     console.log("component mounted");
-    this.setState({tasks: JSON.parse(localStorage.getItem("tasks"))})
+    if (JSON.parse(localStorage.getItem("tasks")) !== null) {
+      this.setState({tasks: JSON.parse(localStorage.getItem("tasks"))})
+    }
   }
 
   setQuery = searchQuery => {
@@ -37,7 +43,8 @@ class App extends React.Component {
         task: taskName,
         id: Date.now(),
         completed: false
-      }]
+      }],
+      saved: false
     })
   }
 
@@ -53,21 +60,25 @@ class App extends React.Component {
       else {
         return task;
       }
-    })})
+    }),
+    saved: false
+  })
   }
 
   clearAll = () => {
-    this.setState({tasks: this.state.tasks.filter(task => {
-      return !task.completed;
-    })})
+    this.setState({
+      tasks: this.state.tasks.filter(task => !task.completed),
+      saved: false
+    })
   }
 
   save = () => {
-    localStorage.setItem("tasks", JSON.stringify(this.state.tasks))
-    this.setState({saved: true});
-    setTimeout(() => {
-      this.setState({saved: false}); 
-    }, 2000)
+    if (this.state.saved === false) {
+      localStorage.setItem("tasks", JSON.stringify(this.state.tasks))
+      this.setState({
+        saved: true
+      });
+    }
   }
 
   render() {
@@ -75,8 +86,7 @@ class App extends React.Component {
       <div className="main-container">
         <h1 style={{margin: "0"}}>Todo</h1>
         <div className="save">
-          <button onClick={this.save}>Save</button>
-          <div style={this.state.saved ? {opacity:100} : {opacity:0}}>Saved!</div>
+          <button className={this.state.saved ? "disabled" : ""} onClick={this.save}>{this.state.saved ? "Saved" : "Save"}</button>
         </div>
         <TodoSearch setQuery={this.setQuery}/>
         <TodoList tasks={this.state.tasks} toggleCompletion={this.toggleCompletion} query={this.state.query}/>
