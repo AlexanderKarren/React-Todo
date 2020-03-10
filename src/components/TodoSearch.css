@@ -10,6 +10,11 @@
     width:100%;
 }
 
+.search-form button {
+    display:flex;
+    align-items:center;
+}
+
 .search-form:hover {
     border:1px solid cornflowerblue;
 }

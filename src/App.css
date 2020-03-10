@@ -14,6 +14,7 @@ button {
     border: 1px solid white;
     color:white;
     fill:white;
+    outline:none;
 }
 
 button:hover {
@@ -22,4 +23,23 @@ button:hover {
     fill:cornflowerblue;
     border:1px solid cornflowerblue;
     background-color:white;
+}
+
+button:active {
+    outline:none;
+}
+
+button > div > div {
+    display:flex;
+    align-items:center;
+}
+
+.save {
+    margin-top:15px;
+    color:cornflowerblue;
+}
+
+.save > div:last-child {
+    margin:5px 0 5px 0;
+    transition:.5s;
 }
