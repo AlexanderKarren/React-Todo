@@ -1,0 +1,28 @@
+.search-container {
+    width:35%;
+}
+
+.search-form {
+    border:1px solid lightgray;
+    border-radius:5px;
+    display:flex;
+    align-items:center;
+    width:100%;
+}
+
+.search-form button {
+    display:flex;
+    align-items:center;
+}
+
+.search-form:hover {
+    border:1px solid cornflowerblue;
+}
+
+.search-form input {
+    margin-left:15px;
+    width:95%;
+    border:0;
+    font-size:inherit;
+    outline:none;
+}

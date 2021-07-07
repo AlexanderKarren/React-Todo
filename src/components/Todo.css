@@ -1,0 +1,19 @@
+.task {
+    display:flex;
+    background-color:#F5F5F5;
+    border:1px solid lightgray;
+    border-radius:5px;
+    padding:10px;
+    margin-top:10px;
+    transition:.1s;
+}
+
+.task:hover {
+    cursor:pointer;
+    border: 1px solid cornflowerblue;
+}
+
+.completed {
+    text-decoration: line-through;
+    color:slategray;
+}
